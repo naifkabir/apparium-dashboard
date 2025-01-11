@@ -91,7 +91,7 @@ export const ContactUsColumn = ({
       enableSorting: false,
     },
     {
-      accessorKey: "_id",
+      accessorKey: "action",
       header: "Action",
       cell: ({ row }) => {
         const message_id = row.original["_id"];

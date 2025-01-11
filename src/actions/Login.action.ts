@@ -21,7 +21,7 @@ export async function LoginUser(
 > {
   try {
     const response = await apiClient.post<ApiResponse<{ accessToken: string }>>(
-      "/admins/log-in",
+      "/user/log-in",
       data
     );
 

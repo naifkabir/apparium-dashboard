@@ -20,6 +20,8 @@ import {
 import { Toaster, toast } from "sonner";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Logout } from "@/actions/Logout.action";
+import { useRouter } from "next/navigation";
 
 export function NavUser({
   user,
@@ -32,8 +34,22 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar();
 
+  const router = useRouter();
+
   const handleLogout = async () => {
-    console.log("logout");
+    try {
+      console.log("Logout");
+      const result = await Logout();
+      if (result.success) {
+        toast.success(result.message);
+        const redirectDestination = "/";
+        router.push(redirectDestination);
+      }
+    } catch (error: any) {
+      toast.error(error.message);
+    } finally {
+      toast.dismiss();
+    }
   };
 
   return (

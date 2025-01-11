@@ -8,9 +8,9 @@ export async function GetAllInquiryMassages() {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("accessToken")?.value;
 
-  //   if (!accessToken) {
-  //     return { error: "No access token found." };
-  //   }
+  if (!accessToken) {
+    return { error: "No access token found." };
+  }
 
   try {
     const response = await apiClient.get(`/message/get-all`, {
@@ -31,16 +31,16 @@ export async function GetAllInquiryMassages() {
   }
 }
 
-export async function DeleteInquiryMassage(message_id: string) {
+export async function DeleteInquiryMassage(id: string) {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("accessToken")?.value;
 
-  //   if (!accessToken) {
-  //     return { error: "No access token found." };
-  //   }
+  if (!accessToken) {
+    return { error: "No access token found." };
+  }
 
   try {
-    const response = await apiClient.delete(`/message/get-all`, {
+    const response = await apiClient.delete(`/message//delete/${id}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

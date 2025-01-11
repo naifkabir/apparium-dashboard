@@ -59,7 +59,7 @@ const MainPageCompInquiry = () => {
         );
         toast.success(result.message);
       } else {
-        throw new Error(result.error);
+        toast.error(result.message);
       }
     } catch (error: any) {
       toast.error(error.message);
